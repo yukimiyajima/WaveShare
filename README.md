@@ -42,10 +42,11 @@ https://docs.google.com/spreadsheets/d/1CztLbOw4qnsgmeVP2CSxrQOUWS4sHDoBhsYrTGTZ
 
 * carrierwave
 * mini_magick
-* device
+* devise
 * RSpec
 * Google Maps JavaScript API
 * geolocation API
 * AWS
+* Ajax
 * Bootstrap 3
 
