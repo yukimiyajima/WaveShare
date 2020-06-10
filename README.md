@@ -23,18 +23,18 @@
 
 
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1jpwguvdlQrjUQV-H9v6Kb4FKKD4p3j1uk4kLlwocWMs/edit#gid=2024513967
+https://docs.google.com/spreadsheets/d/1jpwguvdlQrjUQV-H9v6Kb4FKKD4p3j1uk4kLlwocWMs/edit?usp=sharing
 
 ## テーブル定義
-https://docs.google.com/spreadsheets/d/10RuF5Pk66zq94kEpPtvjFVKd8fmd6pjLgWqd6Ce-LcQ/edit#gid=599325604
+https://docs.google.com/spreadsheets/d/10RuF5Pk66zq94kEpPtvjFVKd8fmd6pjLgWqd6Ce-LcQ/edit?usp=sharing
 
 
 ## 画面遷移図
-https://docs.google.com/spreadsheets/d/1l_fBoVfsgUTT8je4lJCxk92PyhhcfWhhQU77N2ytu6k/edit#gid=0
+https://docs.google.com/spreadsheets/d/1l_fBoVfsgUTT8je4lJCxk92PyhhcfWhhQU77N2ytu6k/edit?usp=sharing
 
 
 ## 画面ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1CztLbOw4qnsgmeVP2CSxrQOUWS4sHDoBhsYrTGTZuog/edit#gid=0
+https://docs.google.com/spreadsheets/d/1CztLbOw4qnsgmeVP2CSxrQOUWS4sHDoBhsYrTGTZuog/edit?usp=sharing
 
 
 
@@ -43,6 +43,7 @@ https://docs.google.com/spreadsheets/d/1CztLbOw4qnsgmeVP2CSxrQOUWS4sHDoBhsYrTGTZ
 * carrierwave
 * mini_magick
 * device
+* RSpec
 * Google Maps JavaScript API
 * geolocation API
 * AWS
