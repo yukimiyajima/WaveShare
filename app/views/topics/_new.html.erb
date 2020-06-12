@@ -1,0 +1,16 @@
+<%= link_to 'Back', topics_path, remote: true %>
+
+<%= form_with(model: topic) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_area :title %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

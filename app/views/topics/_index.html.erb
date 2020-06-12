@@ -1,0 +1,11 @@
+<%= link_to 'New Topic', new_topic_path, remote: true %>
+
+<% @topics.each do |topic| %>
+  <div>
+    <%= topic.title %>
+    <%= topic.content %>
+    <%= link_to 'Show', topic, remote: true %>
+    <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <hr>
+  </div>
+<% end %>

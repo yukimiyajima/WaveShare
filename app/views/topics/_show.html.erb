@@ -1,0 +1,8 @@
+<%= link_to 'Back', topics_path, remote: true %>
+
+<div>
+  <%= @topic.title %>
+  <%= @topic.content %>
+  <hr>
+</div>
+<%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
