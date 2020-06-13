@@ -113,6 +113,12 @@ var newMarker;
     }
   }
 
+  function changeCenter(e) {
+    var lat = e.target.dataset.lat;
+    var lng = e.target.dataset.lng;
+    map.panTo(new google.maps.LatLng(lat, lng));
+  }
+  
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["API_KEY"]%>&callback&callback=initMap" async defer></script>
 
