@@ -1,14 +1,13 @@
 class TopicsController < ApplicationController
 
   before_action :set_topic, only: [:show, :destroy]
+  before_action :set_topics, only: [:home, :index, :create]
 
   def home
-    @topics = Topic.all
     @markers_json = Topic.pluck(:id, :lat, :lng, :title, :content).to_json
   end
 
   def index
-    @topics = Topic.all
   end
 
   def show
@@ -22,10 +21,9 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topics = Topic.all
     @topic = Topic.new(topic_params)
       if @topic.save
-        render :index
+        redirect_to home_url
       else
         render :new
       end
@@ -40,6 +38,10 @@ class TopicsController < ApplicationController
 
   def set_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def set_topics
+    @topics = Topic.all.order(created_at: "DESC")
   end
 
   def topic_params
