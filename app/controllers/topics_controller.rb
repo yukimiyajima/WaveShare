@@ -45,6 +45,6 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:topic).permit(:title, :content, :lat, :lng)
+    params.require(:topic).permit(:title, :content, :lat, :lng, :image)
   end
 end 
