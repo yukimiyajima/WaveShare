@@ -14,7 +14,10 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
+    @topic = Topic.new(
+      lat: params[:latitude], 
+      lng: params[:longitude],
+    )
   end
 
   def create
@@ -39,6 +42,6 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:topic).permit(:title, :content)
+    params.require(:topic).permit(:title, :content, :lat, :lng)
   end
 end 
