@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 
   def home
     @topics = Topic.all
-    @markers_json = Topic.pluck(:id, :lat, :lng, :content).to_json
+    @markers_json = Topic.pluck(:id, :lat, :lng, :title, :content).to_json
   end
 
   def index
