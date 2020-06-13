@@ -1,9 +1,19 @@
 <%= link_to 'Back', topics_path, remote: true %>
 
 <div>
-  <%= @topic.title %>
-  <%= @topic.content %>
-  <%= image_tag @topic.image.url if @topic.image? %>
+  <div>
+    <%= @topic.title %>
+  </div>
+  
+  <div> 
+    <%= @topic.content %>
+  </div>
+
+  <div class="topics_show_image">
+    <%= image_tag @topic.image.url if @topic.image? %>
+  </div>
+
   <hr>
+
 </div>
 <%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
