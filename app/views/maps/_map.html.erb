@@ -3,6 +3,10 @@ var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 35.330816, lng: 139.429835},
+
+      disableDefaultUI: true,
+      zoomControl: true,
+
     zoom: 13,
     styles: [
         {stylers: [{weight: 1}]},
@@ -78,10 +82,34 @@ var newMarker;
         label: `${markers[i][0]}`, 
       });
 
-      var infowindow = new google.maps.InfoWindow();
-      infowindow.setContent(markers[i][3]);
+      var infowindow = new google.maps.InfoWindow({
+        disableAutoPan: true,
+        content: markers[i][3],
+      });
+
       infowindow.open(map, marker);
-      
+  
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          var infowindow = new google.maps.InfoWindow();
+          map.panTo({lat: markers[i][1], lng: markers[i][2]});
+          if(newMarker != null){
+            newMarker.setMap(null);
+            newMarker = null;
+          }
+
+          $.ajax({
+            url: `topics/${markers[i][0]}`,
+            type: 'GET',
+            success: function() {
+              console.log('success');
+            },
+            error: function() {
+              console.log('error')
+            }
+          });
+        }
+      })(marker, i));
     }
   }
 
