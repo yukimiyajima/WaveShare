@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params)
+    @topic = current_user.topics.build(topic_params)
       if @topic.save
         redirect_to home_url
       else
@@ -47,4 +47,4 @@ class TopicsController < ApplicationController
   def topic_params
     params.require(:topic).permit(:title, :content, :lat, :lng, :image)
   end
-end 
+end
