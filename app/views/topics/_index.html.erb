@@ -1,7 +1,10 @@
 <% @topics.each do |topic| %>
-  <div>
+  <div class="topics_index_topic">
     <%= topic.title %>
     <%= topic.content %>
+    <div class="topics_image">
+      <%= image_tag topic.image.url if topic.image? %>
+    </div>
     <%= link_to 'Show', topic, remote: true, data: {lat: "#{topic.lat}", lng: "#{topic.lng}"}, onClick: "changeCenter(event);" %>
     <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %>
     <hr>
