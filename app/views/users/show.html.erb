@@ -1,33 +1,8 @@
 <div class="container"> 
 
 <div id="topics_area">
-  <h1><%= @user.name %></h1>
-  <%= link_to 'edit', edit_user_registration_path %>
-  <hr>
-
-    <% @topics.each do |topic| %>
-      <div>
-        <div>
-          <%= topic.user.name %>
-        </div>
-
-        <div>
-          <%= topic.title %>
-        </div>
-
-        <div>
-          <%= topic.content %>
-        </div>
-
-        <div class="topics_image">
-          <%= image_tag topic.image.url if topic.image? %>
-        </div>
-
-        <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-        <hr>
-      </div>
-    <% end %>
-  </div>
+  <%= render partial: 'users/show', locals: { user:@user, topics: @topics } %>
+</div>
 
   <div id="map"></div>
   <div id="markers" data-markers="<%= @markers_json %>"></div>
@@ -82,17 +57,6 @@
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           map.panTo({lat: markers[i][1], lng: markers[i][2]});
-
-          $.ajax({
-            url: `topics/${markers[i][0]}`,
-            type: 'GET',
-            success: function() {
-              console.log('success');
-            },
-            error: function() {
-              console.log('error')
-            }
-          });
         }
       })(marker, i));
     }
