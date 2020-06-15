@@ -1,0 +1,109 @@
+<div class="container"> 
+
+<div id="topics_area">
+  <h1><%= @user.name %></h1>
+  <%= link_to 'edit', edit_user_registration_path %>
+  <hr>
+
+    <% @topics.each do |topic| %>
+      <div>
+        <div>
+          <%= topic.user.name %>
+        </div>
+
+        <div>
+          <%= topic.title %>
+        </div>
+
+        <div>
+          <%= topic.content %>
+        </div>
+
+        <div class="topics_image">
+          <%= image_tag topic.image.url if topic.image? %>
+        </div>
+
+        <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+        <hr>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="map"></div>
+  <div id="markers" data-markers="<%= @markers_json %>"></div>
+  <script>
+  var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 35.330816, lng: 139.429835},
+      disableDefaultUI: true,
+      zoomControl: true,
+      zoom: 13,
+      styles: [
+        {stylers: [{weight: 1}]},
+        {
+          featureType: 'landscape',
+          elementType: 'labels.icon',
+          stylers: [{visibility: 'off'}]
+        },
+        {
+          featureType: 'poi',
+          elementType: 'labels.icon',
+          stylers: [{visibility: 'off'}]
+        },
+        {
+          featureType: 'transit.station.airport',
+          elementType: 'labels.icon',
+          stylers: [{visibility: 'off'}]
+        }
+      ],
+    });
+
+    map.addListener('click', function(e) {
+      map.panTo({lat: e.latLng.lat(), lng: e.latLng.lng()}); 
+    });
+
+    var markersJson = document.getElementById('markers').getAttribute('data-markers');
+    var markers = JSON.parse(markersJson);
+    for (var i = 0; i < markers.length; i++) {
+      var marker = new google.maps.Marker({
+        position: {lat: markers[i][1], lng: markers[i][2]}, 
+        map: map,
+        label: `${markers[i][0]}`, 
+      });
+
+      var infowindow = new google.maps.InfoWindow({
+        disableAutoPan: true,
+        content: markers[i][3],
+      });
+
+      infowindow.open(map, marker);
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          map.panTo({lat: markers[i][1], lng: markers[i][2]});
+
+          $.ajax({
+            url: `topics/${markers[i][0]}`,
+            type: 'GET',
+            success: function() {
+              console.log('success');
+            },
+            error: function() {
+              console.log('error')
+            }
+          });
+        }
+      })(marker, i));
+    }
+  }
+
+  function changeCenter(e) {
+    var lat = e.target.dataset.lat;
+    var lng = e.target.dataset.lng;
+    map.panTo(new google.maps.LatLng(lat, lng));
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["API_KEY"]%>&callback&callback=initMap" async defer></script>
+
+</div>

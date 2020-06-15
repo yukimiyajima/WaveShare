@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TestWaveshare</title>
+    <title>WaveShare</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +12,7 @@
   <body>
   <header>
       <% if user_signed_in? %>
-        <%= current_user.name %>
+        <%= link_to "#{current_user.name}", user_path(id: current_user.id) %>
         <%= link_to "log out", destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to "sign up", new_user_registration_path %>

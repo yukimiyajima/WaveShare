@@ -1,7 +1,7 @@
 <% @topics.each do |topic| %>
   <div>
     <div>
-      <%= topic.user.name %>
+      <%= link_to "#{topic.user.name}", user_path(id: topic.user.id) %>
     </div>
     <div>
       <%= topic.title %>
