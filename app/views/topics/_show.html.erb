@@ -2,7 +2,10 @@
 
 <div>
   <div>
-    <%= link_to "#{topic.user.name}", user_path(id: topic.user.id) %>
+  <%= link_to user_path(id: @topic.user.id) do %>
+    <%= image_tag @topic.user.icon.thumb.url, class: 'icon' if @topic.user.icon? %>
+    <%= @topic.user.name %>
+  <% end %>
   </div>
 
   <div>

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         topic.lng,
         topic.title,
         topic.content,
-        topic.image.url
+        topic.image.thumb.url
       ]
     end.to_json
   end

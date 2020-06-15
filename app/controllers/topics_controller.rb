@@ -5,7 +5,16 @@ class TopicsController < ApplicationController
   before_action :ensure_correct_user, only: [:destroy]
 
   def home
-    @markers_json = Topic.pluck(:id, :lat, :lng, :title, :content).to_json
+    @markers_json = Topic.all.map do |topic|
+      [
+        topic.id,
+        topic.lat,
+        topic.lng,
+        topic.title,
+        topic.content,
+        topic.image.thumb.url
+      ]
+    end.to_json
   end
 
   def index
