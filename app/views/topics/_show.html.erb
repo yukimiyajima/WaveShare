@@ -1,4 +1,4 @@
-<%= link_to 'Back', topics_path, remote: true %>
+<%= link_to "Back", :back, remote: true  %>
 
 <div>
   <div>
@@ -20,4 +20,7 @@
   <hr>
 
 </div>
-<%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+
+<% if current_user.id == topic.user_id %>
+  <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+<% end %>

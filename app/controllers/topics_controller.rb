@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
 
   before_action :set_topic, only: [:show, :destroy]
   before_action :set_topics, only: [:home, :index, :create]
+  before_action :ensure_correct_user, only: [:destroy]
 
   def home
     @markers_json = Topic.pluck(:id, :lat, :lng, :title, :content).to_json
@@ -31,7 +32,7 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic.destroy
-    redirect_to home_url
+    redirect_back(fallback_location: root_path)
   end
 
   private
@@ -46,5 +47,12 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:title, :content, :lat, :lng, :image)
+  end
+
+  def ensure_correct_user
+    @topic = Topic.find(params[:id])
+    if @topic.user_id != current_user.id
+      redirect_to new_user_session_path
+    end
   end
 end

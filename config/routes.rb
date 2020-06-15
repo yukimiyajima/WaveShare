@@ -4,6 +4,7 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
   }
   resources :users, only: [:show]
+  get 'users/topic_show'
 
   resources :topics
   get 'home', to: 'topics#home'

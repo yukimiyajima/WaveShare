@@ -1,5 +1,7 @@
-<h1><%= user.name %></h1>
-<%= link_to 'edit', edit_user_registration_path %>
+<h1><%= @user.name %></h1>
+<% if current_user.id == @user.id %>
+  <%= link_to 'edit', edit_user_registration_path %>
+<% end %>
 <hr>
 
 <% topics.each do |topic| %>
@@ -20,6 +22,11 @@
       <%= image_tag topic.image.url if topic.image? %>
     </div>
 
+    <%= link_to 'Show', topic, remote: true, data: {lat: "#{topic.lat}", lng: "#{topic.lng}"}, onClick: "changeCenter(event);" %>
+    <% if current_user.id == topic.user_id %>
+      <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+    <% end %>
+    
     <hr>
 
   </div>

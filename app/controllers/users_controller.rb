@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @topics = @user.topics
+    @topics = @user.topics.order(created_at: "DESC")
     @markers_json = @topics.map do |topic|
       [
         topic.id,
