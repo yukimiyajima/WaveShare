@@ -11,17 +11,13 @@
 
   <body>
   <header>
-      <%= link_to 'home', root_path %>
-
       <% if user_signed_in? %>
+        <%= link_to 'home', root_path %>
         <%= link_to user_path(id: current_user.id) do %>
-          <%= image_tag current_user.icon.thumb.url, class: 'icon' if current_user.icon? %>
+          <%= image_tag current_user.icon.thumb.url if current_user.icon? %>
           <%= current_user.name %>
         <% end %>
         <%= link_to "log out", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "sign up", new_user_registration_path %>
-          <%= link_to "log in", new_user_session_path %>
       <% end %>
     </header>
 

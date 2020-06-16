@@ -3,6 +3,7 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :destroy]
   before_action :set_topics, only: [:home, :index, :create]
   before_action :ensure_correct_user, only: [:destroy]
+  before_action :authenticate_user!
 
   def home
     @markers_json = Topic.all.map do |topic|
@@ -12,7 +13,8 @@ class TopicsController < ApplicationController
         topic.lng,
         topic.title,
         topic.content,
-        topic.image.thumb.url
+        topic.image.thumb.url,
+        topic.user.icon.thumb.url,
       ]
     end.to_json
   end

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
     @user = User.find(params[:id])
     @topics = @user.topics.order(created_at: "DESC")
@@ -8,8 +10,8 @@ class UsersController < ApplicationController
         topic.lat,
         topic.lng,
         topic.title,
-        topic.content,
-        topic.image.thumb.url
+        topic.image.thumb.url,
+        topic.user.icon.thumb.url,
       ]
     end.to_json
   end
