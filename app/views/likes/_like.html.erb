@@ -1,0 +1,6 @@
+<% if like.present? %>
+  <%= link_to '解除', like_path(id: like.id), method: :delete, remote: true  %>
+<% else %>
+  <%= link_to 'いいね', likes_path(topic_id: topic.id), method: :post, remote: true  %>
+<% end %>
+<%= @likes_count %>
