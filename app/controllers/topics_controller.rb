@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.build(topic_params)
       if @topic.save
-        redirect_to home_url
+        redirect_to root_path
       else
         render :new
       end
