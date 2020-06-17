@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WaveShare</title>
+    <title>Waveshare</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,13 +11,42 @@
 
   <body>
   <header>
-      <% if user_signed_in? %>
-        <%= link_to 'home', root_path %>
-        <%= link_to user_path(id: current_user.id) do %>
-          <%= image_tag current_user.icon.thumb.url if current_user.icon? %>
-          <%= current_user.name %>
+      <div class="header_logo">
+        <%= link_to root_path do %>
+          <%= 'WaveShare' %>
         <% end %>
-        <%= link_to "log out", destroy_user_session_path, method: :delete %>
+      </div>
+
+      <% if user_signed_in? %>
+
+      <div class="header_menu">
+
+      <div class="header_menu_item">
+        <%= link_to root_path do %>
+          <%= fa_icon 'home 2x' %>
+        <% end %>
+      </div>
+
+      <div class="header_menu_item">
+        <%= link_to user_likes_path(current_user.id) do %>
+          <%= fa_icon 'thumbs-o-up 2x' %>
+        <% end %>
+      </div>
+
+      <div class="header_menu_item">
+        <%= link_to user_path(id: current_user.id) do %>
+          <%= image_tag current_user.icon.thumb.url %>
+        <% end %>
+      </div>
+
+      <div class="header_menu_item">
+        <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <%= fa_icon 'sign-out 2x'%>
+        <% end %>
+      </div>
+
+    </div>
+
       <% end %>
     </header>
 
