@@ -79,3 +79,7 @@ img[src*="/uploads/user/icon/"] {
 .users_form {
   text-align: center;
 } 
+
+.link_to_blog {
+  display: block;
+}
