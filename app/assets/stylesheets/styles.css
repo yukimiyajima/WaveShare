@@ -41,3 +41,7 @@ img[src*="/uploads/user/icon/"] {
 #map {
   width: 100%;
 }
+
+.fa-thumbs-up {
+  color: orange;
+}

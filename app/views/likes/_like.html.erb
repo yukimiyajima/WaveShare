@@ -1,6 +1,14 @@
 <% if like.present? %>
-  <%= link_to '解除', like_path(id: like.id), method: :delete, remote: true  %>
+
+  <%= link_to like_path(id: like.id), method: :delete, remote: true do %>
+    <%= fa_icon("thumbs-up") %>
+  <% end %>
+
 <% else %>
-  <%= link_to 'いいね', likes_path(topic_id: topic.id), method: :post, remote: true  %>
+
+  <%= link_to likes_path(topic_id: topic.id), method: :post, remote: true do %>
+    <%= fa_icon("thumbs-up") %>
+  <% end %>
+
 <% end %>
 <%= @likes_count %>
