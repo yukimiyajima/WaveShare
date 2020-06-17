@@ -9,4 +9,7 @@ class User < ApplicationRecord
   mount_uploader :icon, IconUploader
 
   has_many :topics, dependent: :destroy
+
+  has_many :likes, dependent: :destroy
+  has_many :like_topics, through: :likes, source: :topic
 end
