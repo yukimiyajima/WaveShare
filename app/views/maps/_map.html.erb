@@ -1,0 +1,128 @@
+<script>
+var map;
+var newMarker;
+
+  function changeCenter(e) {
+    var lat = e.target.dataset.lat;
+    var lng = e.target.dataset.lng;
+    map.panTo(new google.maps.LatLng(lat, lng));
+  }
+
+  function deleteNewMarker() {
+    newMarker.setMap(null);
+    newMarker = null;
+  }
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.330816, lng: 139.429835},
+
+      disableDefaultUI: true,
+      zoomControl: true,
+
+    zoom: 13,
+    styles: [
+        {stylers: [{weight: 1}]},
+        {
+          featureType: 'landscape',
+          elementType: 'labels.icon',
+          stylers: [{visibility: 'off'}]
+        },
+        {
+          featureType: 'poi',
+          elementType: 'labels.icon',
+          stylers: [{visibility: 'off'}]
+        },
+        {
+          featureType: 'transit.station.airport',
+          elementType: 'labels.icon',
+          stylers: [{visibility: 'off'}]
+        }
+      ],
+    });
+
+    map.addListener('click', function(e) {
+      map.panTo({lat: e.latLng.lat(), lng: e.latLng.lng()}); 
+      if(newMarker != null){
+        deleteNewMarker();
+      }
+
+        $.ajax({
+        url: 'topics/new',
+        type: 'GET',
+        data: {
+          latitude: e.latLng.lat(),
+          longitude: e.latLng.lng(),
+        },
+        success: function() {
+          console.log('success');
+        },
+        error: function() {
+          console.log('error')
+        },
+      });
+
+      newMarker = new google.maps.Marker({
+        position: e.latLng,
+        map: map,
+        title: e.latLng.toString(),
+        animation: google.maps.Animation.DROP,
+      });
+
+      newMarker.addListener('click', function() {
+        deleteNewMarker();
+        $.ajax({
+        url: 'topics',
+        type: 'GET',
+        success: function() {
+          console.log('success');
+        },
+        error: function() {
+          console.log('error')
+         },
+      });
+      });
+    });
+
+    var markersJson = document.getElementById('markers').getAttribute('data-markers');
+    var markers = JSON.parse(markersJson);
+    for (var i = 0; i < markers.length; i++) {
+      var marker = new google.maps.Marker({
+        position: {lat: markers[i][1], lng: markers[i][2]}, 
+        map: map, 
+        
+      });
+
+      var infowindow = new google.maps.InfoWindow({
+        disableAutoPan: true,
+        content: markers[i][3],
+      });
+
+      infowindow.open(map, marker);
+  
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          var infowindow = new google.maps.InfoWindow();
+          map.panTo({lat: markers[i][1], lng: markers[i][2]});
+          if(newMarker != null){
+            deleteNewMarker();
+          }
+
+          $.ajax({
+            url: `topics/${markers[i][0]}`,
+            type: 'GET',
+            success: function() {
+              console.log('success');
+            },
+            error: function() {
+              console.log('error')
+            }
+          });
+        }
+      })(marker, i));
+    }
+  }
+  
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["API_KEY"]%>&callback&callback=initMap" async defer></script>
+

@@ -1,0 +1,24 @@
+<%= link_to 'Back', topics_path, remote: true, onClick: "deleteNewMarker();" %>
+
+<%= form_with(model: topic) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_area :title %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <%= form.hidden_field :lat %>
+  <%= form.hidden_field :lng %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
