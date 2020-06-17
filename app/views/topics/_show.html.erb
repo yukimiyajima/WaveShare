@@ -22,6 +22,11 @@
 
   <hr>
 
+  <% if topic.likes.count != 0 %>
+    <%= link_to 'Like Users', topic_like_users_path(topic.id), remote: true %>
+    <hr>
+  <% end %>
+
 </div>
 
 <div id="likes_area_<%= topic.id %>">

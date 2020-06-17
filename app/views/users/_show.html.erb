@@ -7,37 +7,4 @@
 <% end %>
 <hr>
 
-<% topics.each do |topic| %>
-  <div>
-    <div>
-      <%= link_to user_path(id: topic.user.id) do %>
-        <%= image_tag topic.user.icon.thumb.url if topic.user.icon? %>
-        <%= topic.user.name %>
-      <% end %>
-    </div>
-
-    <div>
-      <%= topic.title %>
-    </div>
-
-    <div>
-      <%= topic.content %>
-    </div>
-
-    <div class="topics_image">
-      <%= image_tag topic.image.url if topic.image? %>
-    </div>
-
-    <div id="likes_area_<%= topic.id %>">
-      <%= render partial: 'likes/like', locals: { topic: topic, like: Like.find_by(topic_id: topic.id, user_id: current_user.id) } %>
-    </div>
-
-    <%= link_to 'Show', topic, remote: true, data: {lat: "#{topic.lat}", lng: "#{topic.lng}"}, onClick: "changeCenter(event);" %>
-    <% if current_user.id == topic.user_id %>
-      <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-    <% end %>
-    
-    <hr>
-
-  </div>
-<% end %> 
+<%= render partial: 'topics/index', locals: { topics: @topics } %>

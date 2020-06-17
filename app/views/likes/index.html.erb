@@ -1,0 +1,12 @@
+<div class="container"> 
+
+  <div id="topics_area">
+    <%= render partial: 'users/show', locals: { user:@user, topics: @topics } %>
+  </div>
+
+  <div id="map"></div>
+  <div id="markers" data-markers="<%= @markers_json %>"></div>
+
+  <%= render partial: 'maps/user_map' %>
+
+</div>
