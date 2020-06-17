@@ -2,26 +2,35 @@
 
 <div>
   <div>
-  <%= link_to user_path(id: @topic.user.id) do %>
-    <%= image_tag @topic.user.icon.thumb.url if @topic.user.icon? %>
-    <%= @topic.user.name %>
+  <%= link_to user_path(id: topic.user.id) do %>
+    <%= image_tag topic.user.icon.thumb.url %>
+    <%= topic.user.name %>
   <% end %>
   </div>
 
   <div>
-    <%= @topic.title %>
+    <%= topic.title %>
   </div>
   
   <div> 
-    <%= @topic.content %>
+    <%= topic.content %>
   </div>
 
   <div class="topics_image">
-    <%= image_tag @topic.image.url if @topic.image? %>
+    <%= image_tag topic.image.url if @topic.image? %>
   </div>
 
   <hr>
 
+  <% if topic.likes.count != 0 %>
+    <%= link_to 'Like Users', topic_like_users_path(topic.id), remote: true %>
+    <hr>
+  <% end %>
+
+</div>
+
+<div id="likes_area_<%= topic.id %>">
+  <%= render partial: 'likes/like', locals: { topic: topic, like: @like }  %>
 </div>
 
 <% if current_user.id == topic.user_id %>

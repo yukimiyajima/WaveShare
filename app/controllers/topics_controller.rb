@@ -23,6 +23,8 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @like = current_user.likes.find_by(topic_id: @topic.id)
+    @likes_count = Like.where(topic_id: @topic.id).count
   end
 
   def new
@@ -63,7 +65,7 @@ class TopicsController < ApplicationController
   def ensure_correct_user
     @topic = Topic.find(params[:id])
     if @topic.user_id != current_user.id
-      redirect_to new_user_session_path
+      redirect_to root_path
     end
   end
 end

@@ -12,9 +12,8 @@ header {
   height: 50px;
 }
 
-img[src*="/uploads/user/icon/"],
 img[src*="/uploads/user/icon/"] { 
-  border-radius:50%; 
+  border-radius: 50%; 
 }
 
 .container {
@@ -40,4 +39,8 @@ img[src*="/uploads/user/icon/"] {
 
 #map {
   width: 100%;
+}
+
+.fa-thumbs-up {
+  color: orange;
 }

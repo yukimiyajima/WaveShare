@@ -1,0 +1,15 @@
+<% if like.present? %>
+
+  <%= link_to like_path(id: like.id), method: :delete, remote: true do %>
+    <%= fa_icon("thumbs-up") %>
+  <% end %>
+
+<% else %>
+
+  <%= link_to likes_path(topic_id: topic.id), method: :post, remote: true do %>
+    <%= fa_icon("thumbs-o-up") %>
+  <% end %>
+
+<% end %>
+
+<%= topic.likes.count if topic.likes.count != 0 %>
