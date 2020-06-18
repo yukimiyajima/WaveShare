@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :topics do
     get 'like_users', to: 'likes#users'
+    resources :comments
   end
 
   root 'topics#home'
