@@ -1,9 +1,21 @@
-<ul>
-  <% comments.each do |comment| %>
-    <% if comment.id.present? %>
-      <li>
+<% comments.each do |comment| %>
+  <% if comment.id.present? %>
+
+      <%= link_to user_path(comment.user.id) do %>
+        <%= image_tag topic.user.icon.thumb.url %>
+        <%= comment.user.name %>
+      <% end %>
+
+      <%= '・' %><%= time_ago_in_words(comment.created_at) %>前
+
+      <div style="background: white;">
+
         <p><%= comment.content %></p>
-      </li>
-    <% end %>
+
+
+      </div>
+
+      <hr>
+
   <% end %>
-</ul> 
+<% end %>

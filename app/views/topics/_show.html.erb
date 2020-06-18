@@ -33,10 +33,13 @@
   <%= render partial: 'likes/like', locals: { topic: topic, like: @like }  %>
 </div>
 
+<hr>
+<%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
+<hr>
+
 <div id ="comments_area">
   <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
 </div>
-  <%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
 
 <% if current_user.id == topic.user_id %>
   <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
