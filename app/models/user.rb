@@ -12,4 +12,7 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :like_topics, through: :likes, source: :topic
+
+  has_many :comments, dependent: :destroy
+  
 end

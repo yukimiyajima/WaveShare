@@ -24,7 +24,8 @@ class TopicsController < ApplicationController
 
   def show
     @like = current_user.likes.find_by(topic_id: @topic.id)
-    @likes_count = Like.where(topic_id: @topic.id).count
+    @comments = @topic.comments
+    @comment = @topic.comments.build
   end
 
   def new
