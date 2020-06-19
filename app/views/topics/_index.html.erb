@@ -1,3 +1,4 @@
+<% i = 0 %>
 <% @topics.each do |topic| %>
   <div>
   <%= link_to user_path(id: topic.user.id) do %>
@@ -28,6 +29,11 @@
         </object>
       </div>
 
+      <div  class="">
+        <%= fa_icon("comments-o 2x") %>
+        <%= topic.comments.count if topic.comments.count > 0 %>
+      </div>
+
       <% if current_user.id == topic.user_id %>
         <object>
           <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
@@ -37,5 +43,8 @@
     <% end %>
 
     </div>
+    <% i += 1 %> 
+  <% unless i == topics.count %>
     <hr>
+  <% end %>
 <% end %>
