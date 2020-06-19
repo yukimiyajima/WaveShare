@@ -9,6 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <% if user_signed_in? %>
+
   <body>
   <header>
       <div class="header_logo">
@@ -16,8 +18,6 @@
           <%= 'WaveShare' %>
         <% end %>
       </div>
-
-      <% if user_signed_in? %>
 
       <div class="header_menu">
 

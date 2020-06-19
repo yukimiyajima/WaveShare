@@ -1,6 +1,6 @@
 <% @topics.each do |topic| %>
   <div>
-  <%= link_to user_path(topic.user.id) do %>
+  <%= link_to user_path(id: topic.user.id) do %>
     <%= image_tag topic.user.icon.thumb.url %>
   <%= topic.user.name %>
   <% end %>

@@ -1,10 +1,14 @@
 <% @users.each do |user| %>
 
-  <div style="background: white;">
-    <%= link_to user_path(id: user.id) do %>
-      <%= image_tag user.icon.thumb.url %>
-      <%= user.name %>
-    <% end %>
+  <div class="row", style="background: white";>
+
+    <div class="col-xs-8">
+      <%= link_to user_path(id: user.id) do %>
+        <%= image_tag user.icon.thumb.url %>
+        <%= user.name %>
+      <% end %>
+    </div>
+
   </div>
 
   <hr>

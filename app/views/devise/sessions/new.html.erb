@@ -24,6 +24,10 @@
     </div>
   <% end %>
 
+  <div style="margin: 10px;">
+    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+  </div>
+
   <hr>
 
   <%= render "devise/shared/links" %>
