@@ -1,13 +1,15 @@
-<%= link_to 'Back', topics_path, remote: true, onClick: "deleteNewMarker();" %>
+<%= link_to topics_path, remote: true, onClick: "deleteNewMarker();" do %>
+  <%= fa_icon 'chevron-left' %>
+<% end %>
 
 <%= form_with(model: topic) do |form| %>
   <div>
     <%= form.label :title %>
-    <%= form.text_area :title %>
+    <%= form.text_area :title, class: 'form-control', style: 'resize: none;' %>
   </div>
   <div>
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, class: 'form-control', style: 'resize: none;' %>
   </div>
 
   <div>
@@ -19,6 +21,6 @@
   <%= form.hidden_field :lng %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn' %>
   </div>
 <% end %>

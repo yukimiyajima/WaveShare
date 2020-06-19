@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
 
-  <div>
+  <div style="background: white;">
     <%= link_to user_path(id: user.id) do %>
       <%= image_tag user.icon.thumb.url %>
       <%= user.name %>
