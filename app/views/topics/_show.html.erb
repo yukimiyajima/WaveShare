@@ -1,4 +1,6 @@
-<%= link_to "Back", :back, remote: true  %>
+<%= link_to :back, remote: true do %>
+  <%= fa_icon 'chevron-left' %>
+<% end %>
 
 <div>
   <div>
@@ -8,17 +10,24 @@
   <% end %>
   </div>
 
-  <div>
-    <%= topic.title %>
-  </div>
-  
-  <div> 
-    <%= topic.content %>
-  </div>
+  <div style="background: white;">
+    <div>
+      <%= topic.title %>
+    </div>
 
-  <div class="topics_image">
-    <%= image_tag topic.image.url if @topic.image? %>
-  </div>
+    <div>
+      <%= topic.content %>
+    </div>
+
+    <div class="topics_image">
+      <%= image_tag topic.image.url if topic.image? %>
+    </div>
+
+    <div>
+      <% if current_user.id == topic.user_id %>
+        <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+      <% end %>
+    </div>
 
   <hr>
 
@@ -29,9 +38,17 @@
 
 </div>
 
-<div id="likes_area_<%= topic.id %>">
-  <%= render partial: 'likes/like', locals: { topic: topic, like: @like }  %>
-</div>
+<div class="row">
+
+  <div id="likes_area_<%= topic.id %>" class="col-xs-6">
+    <%= render partial: 'likes/like', locals: { topic: topic, like: @like }  %>
+  </div>
+
+  <div  class="col-xs-6">
+    <% unless topic.likes.count == 0 %>
+      <%= link_to 'Like Users', topic_like_users_path(topic.id), remote: true %>
+    <% end %>
+  </div>
 
 <hr>
 <%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
@@ -41,6 +58,5 @@
   <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
 </div>
 
-<% if current_user.id == topic.user_id %>
-  <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-<% end %>
+</div>
+</div>

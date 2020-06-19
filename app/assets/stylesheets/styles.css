@@ -1,5 +1,9 @@
 #map {
-  height: 100%;
+  width: 100%; 
+}
+
+h1 {
+  margin: 0;
 }
 
 html, body {
@@ -7,10 +11,11 @@ html, body {
   margin: 0;
   padding: 0;
   color: #333;
+  background: whitesmoke;
 }
 
 body {
-  height: calc(100% - 57px); 
+  height: calc(100% - 55px);
 }
 
 li {
@@ -22,21 +27,18 @@ a {
   color: #333;
 }
 
-#map {
-  width: 100%; 
-}
-
 header {
   display: flex;
   justify-content: space-between;
-  height: 55px;
+  height: 53px;
   padding: 0 20px;
+  background: white;
   line-height: 60px;
-  border: 1px solid #DBDBDB;
+  border-bottom: 1px solid #eee;
 }
 
 .header_menu_item img {
-  padding: 10px 0;
+  margin-bottom: 10px;
 }
 
 .header_menu {
@@ -51,16 +53,15 @@ img[src*="/uploads/user/icon/"] {
   border-radius: 50%; 
 }
 
-.container {
+.main_container {
   display: flex;
   width: 100%;
   height: 100%;
 }
 
 #topics_area {
-  width: 300px;
-  height:100%;
-  margin: 0 15px;
+  width: 30%;
+  padding: 15px 15px 0 15px;
   overflow-y:scroll;
 }
 
@@ -76,10 +77,40 @@ img[src*="/uploads/user/icon/"] {
   color: orange;
 }
 
+.fa-thumbs-up:hover {
+  transform: scale(1.1, 1.1);
+}
+
+#topics_area .fa-thumbs-o-up:hover {
+  -webkit-animation: bound 1s ease-in infinite; 
+  -moz-animation:    bound 1s ease-in infinite; 
+  animation: bound 1s ease-in infinite;
+  transform: scale(1.1, 1.1);
+  color: orange;
+}
+
+@keyframes bound {
+  from { transform: scale(1); }
+  25% { transform: scale(1.8); }
+  50% { transform: scale(0.95); }
+  75% { transform: scale(1.05); }
+  to { transform: scale(1); }
+}
+
+/* faa-wrench animated-hover */
+
 .users_form {
   text-align: center;
+  width: 348px;
+  margin: 10px auto;
+  padding: 10px;
+  background: white;
+}
+
+.actions {
+  margin: 15px;
 } 
 
-.link_to_blog {
+.link_to_topic {
   display: block;
 }

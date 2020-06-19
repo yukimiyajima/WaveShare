@@ -1,5 +1,5 @@
 <h1>
-  <%= image_tag @user.icon.url if current_user.icon? %>
+  <%= image_tag @user.icon.url %>
   <%= @user.name %>
 </h1>
 <% if current_user.id == @user.id %>

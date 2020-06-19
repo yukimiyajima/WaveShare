@@ -14,5 +14,11 @@ class User < ApplicationRecord
   has_many :like_topics, through: :likes, source: :topic
 
   has_many :comments, dependent: :destroy
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com', name: 'guest') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
   
 end

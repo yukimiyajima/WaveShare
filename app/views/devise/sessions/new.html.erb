@@ -19,10 +19,16 @@
       </div>
     <% end %>
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
+    <div class="actions" >
+      <%= f.submit t('.sign_in'), class: 'btn btn-default' %>
     </div>
   <% end %>
+
+  <div style="margin: 10px;">
+    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+  </div>
+
+  <hr>
 
   <%= render "devise/shared/links" %>
 </div> 
