@@ -38,7 +38,7 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.build(topic_params)
       if @topic.save
-        redirect_to root_path
+        redirect_to home_path
       else
         render :new
       end
@@ -46,7 +46,7 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: home_path)
   end
 
   private
@@ -66,7 +66,7 @@ class TopicsController < ApplicationController
   def ensure_correct_user
     @topic = Topic.find(params[:id])
     if @topic.user_id != current_user.id
-      redirect_to root_path
+      redirect_to home_path
     end
   end
 end
