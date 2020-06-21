@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'dotenv-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'font-awesome-rails'
@@ -23,7 +24,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'pry-rails'
-  gem 'dotenv-rails'
+  gem 'spring-commands-rspec'
+  gem 'faker'
+  gem 'launchy'
 end
 
 group :development do
