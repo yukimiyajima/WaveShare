@@ -90,7 +90,7 @@ function initMap() {
       var marker = new google.maps.Marker({
         position: {lat: markers[i][1], lng: markers[i][2]}, 
         map: map, 
-        
+        icon: markers[i][6],
       });
 
       var infowindow = new google.maps.InfoWindow({
