@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root 'home#top'
+
+  get 'home', to: 'topics#home'
+  
   resources :likes, only: [:create, :destroy]
   devise_for :users, controllers: {
         registrations: 'users/registrations'
@@ -17,5 +21,4 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  root 'topics#home'
 end

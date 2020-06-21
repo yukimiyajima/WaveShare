@@ -9,12 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <% if user_signed_in? %>
-
+  
   <body>
-  <header>
+    <% if user_signed_in? %>
+    <header>
       <div class="header_logo">
-        <%= link_to root_path do %>
+        <%= link_to home_path do %>
           <%= 'WaveShare' %>
         <% end %>
       </div>
@@ -22,7 +22,7 @@
       <div class="header_menu">
 
       <div class="header_menu_item">
-        <%= link_to root_path do %>
+        <%= link_to home_path do %>
           <%= fa_icon 'home 2x' %>
         <% end %>
       </div>
@@ -47,8 +47,8 @@
 
     </div>
 
-      <% end %>
     </header>
+    <% end %>
 
     <%= yield %>
 

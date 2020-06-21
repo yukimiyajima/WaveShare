@@ -47,6 +47,7 @@ header {
 
 .header_menu_item {
   margin-left: 22px;
+  color: #333;
 }
 
 img[src*="/uploads/user/icon/"] { 
@@ -75,10 +76,16 @@ img[src*="/uploads/user/icon/"] {
 
 .fa-thumbs-up {
   color: orange;
+  font-size:30px;
+}
+
+.fa-thumbs-o-up {
+  font-size:2em;
 }
 
 .fa-thumbs-up:hover {
   transform: scale(1.1, 1.1);
+  font-size:30px;
 }
 
 #topics_area .fa-thumbs-o-up:hover {
@@ -87,6 +94,7 @@ img[src*="/uploads/user/icon/"] {
   animation: bound 1s ease-in infinite;
   transform: scale(1.1, 1.1);
   color: orange;
+  font-size:30px;
 }
 
 @keyframes bound {
@@ -113,4 +121,17 @@ img[src*="/uploads/user/icon/"] {
 
 .link_to_topic {
   display: block;
+}
+
+.top-background {
+  background: url("/top.png");
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-size: cover;
+}
+
+.top-message {
+  padding: 50px;
 }
