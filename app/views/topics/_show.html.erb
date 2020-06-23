@@ -1,5 +1,5 @@
 <%= link_to :back, remote: true do %>
-  <%= fa_icon 'chevron-left' %>
+  <%= fa_icon 'angle-double-left 2x' %>
 <% end %>
 
 <div>
@@ -23,40 +23,40 @@
       <%= image_tag topic.image.url if topic.image? %>
     </div>
 
-    <div>
+    <div class="user-topics-items">
       <% if current_user.id == topic.user_id %>
-        <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+      <object>
+      <%= link_to fa_icon("pencil 2x"), edit_topic_path(topic.id), remote: true, data: {lat: "#{topic.lat}", lng: "#{topic.lng}"}, onClick: "changeCenter(event);"%>
+      </object>
+      <% end %>
+      
+      <% if current_user.id == topic.user_id %>
+        <%= link_to fa_icon("trash 2x"), topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
       <% end %>
     </div>
 
   <hr>
-
   <% if topic.likes.count != 0 %>
-    <%= link_to 'Like Users', topic_like_users_path(topic.id), remote: true %>
-    <hr>
+    <%= link_to 'いいねしているユーザー一覧', topic_like_users_path(topic.id), remote: true %>
   <% end %>
+  <hr>
 
 </div>
 
-<div class="row">
+  <div class="row">
 
-  <div id="likes_area_<%= topic.id %>" class="col-xs-6">
-    <%= render partial: 'likes/like', locals: { topic: topic, like: @like }  %>
+    <div id="likes_area_<%= topic.id %>" class="col-xs-6">
+      <%= render partial: 'likes/like', locals: { topic: topic, like: @like }  %>
+    </div>
+
+    <div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
+    <hr>
+    <div>
+
+    <div id ="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
+    </div>
+
   </div>
 
-  <div  class="col-xs-6">
-    <% unless topic.likes.count == 0 %>
-      <%= link_to 'Like Users', topic_like_users_path(topic.id), remote: true %>
-    <% end %>
-  </div>
-
-<hr>
-<%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
-<hr>
-
-<div id ="comments_area">
-  <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
-</div>
-
-</div>
-</div>

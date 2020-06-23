@@ -1,5 +1,10 @@
 <%= form_with(model: [topic, comment]) do |f| %>
-  <%= f.label :content%>
-  <%= f.text_field :content %>
-  <%= f.submit %>
-<% end %>
+  
+  <div class="field">
+  <%= f.text_field :content, class: 'form-control', id:'comment_content', placeholder: 'コメントを入力' %>
+
+  <div class="actions text-right">
+    <%= f.submit class: 'btn', id:"submit" %>
+  </div>
+</div>
+<% end %> 

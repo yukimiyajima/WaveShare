@@ -1,0 +1,42 @@
+<%= link_to topics_path, remote: true, onClick: "deleteNewMarker();" do %>
+  <%= fa_icon 'angle-double-left 2x' %>
+<% end %>
+
+<%= form_with(model: topic) do |form| %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_area :title, class: 'form-control', style: 'resize: none;', placeholder: 'ポイント名や場所を入力' %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content, class: 'form-control', style: 'resize: none;', placeholder: '海や波の概況を入力' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image, class:'form-control' %>
+  </div>
+
+  <%= form.hidden_field :lat %>
+  <%= form.hidden_field :lng %>
+
+  <div class="actions">
+    <%= form.submit class: 'btn pull-right', id:"submit" %>
+  </div>
+<% end %>
+
+<script>
+  $(function() {
+    if ( $('#text').val().length == 0 ) {
+      $('#submit').attr('disabled', 'disabled');
+    }
+    $('#text').bind('keydown keyup keypress change', function() {
+      if ( $(this).val().length > 0 ) {
+        $('#submit').removeAttr('disabled');
+      } else {
+        $('#submit').attr('disabled', 'disabled');
+      }
+    });
+  });
+</script>

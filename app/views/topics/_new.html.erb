@@ -1,15 +1,15 @@
 <%= link_to topics_path, remote: true, onClick: "deleteNewMarker();" do %>
-  <%= fa_icon 'chevron-left' %>
+  <%= fa_icon 'angle-double-left 2x' %>
 <% end %>
 
 <%= form_with(model: topic) do |form| %>
   <div>
     <%= form.label :title %>
-    <%= form.text_area :title, class: 'form-control', style: 'resize: none;' %>
+    <%= form.text_area :title, class: 'form-control', style: 'resize: none;', placeholder: 'ポイント名や場所を入力' %>
   </div>
   <div>
     <%= form.label :content %>
-    <%= form.text_area :content, class: 'form-control', style: 'resize: none;' %>
+    <%= form.text_area :content, class: 'form-control', style: 'resize: none;', placeholder: '海や波の概況を入力' %>
   </div>
 
   <div>

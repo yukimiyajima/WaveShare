@@ -1,10 +1,29 @@
-<h1>
+<div class="text-center">
   <%= image_tag @user.icon.url %>
-  <%= @user.name %>
-</h1>
-<% if current_user.id == @user.id %>
-  <%= link_to 'edit', edit_user_registration_path %>
-<% end %>
+  <h1><%= @user.name %></h1>
+  
+  <div>
+    <% if current_user.id == @user.id %>
+      <%= link_to 'edit', edit_user_registration_path %>
+    <% end %>
+  </div>
+
+</div>
+
 <hr>
+
+<div class="user-show-spueeze">
+
+    <div>
+        <%= link_to t('topics'), user_path(id: current_user.id)%>
+    </div>
+
+    <div>
+      <%= link_to t('Likes'), user_likes_path(@user.id) %>
+    </div>
+
+</div>
+
+<hr style="margin-top: 0;">
 
 <%= render partial: 'topics/index', locals: { topics: @topics } %>
