@@ -33,9 +33,10 @@
         <% end %>
       </div>
 
+      
       <div class="header_menu_item">
         <%= link_to user_path(id: current_user.id) do %>
-          <%= image_tag current_user.icon.thumb.url %>
+          <%= image_tag current_user.icon.url %>
         <% end %>
       </div>
 
@@ -44,6 +45,7 @@
           <%= fa_icon 'sign-out 2x'%>
         <% end %>
       </div>
+
 
     </div>
 

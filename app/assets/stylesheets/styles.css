@@ -11,7 +11,7 @@ html, body {
   margin: 0;
   padding: 0;
   color: #333;
-  background: rgb(4, 73, 85);
+  background: rgb(203, 207, 207);
 }
 
 li {
@@ -21,6 +21,10 @@ li {
 a {
   text-decoration: none;
   color: #333;
+}
+
+#comments_area p {
+  font-size: 15px;
 }
 
 header {
@@ -35,6 +39,8 @@ header {
 
 .header_menu_item img {
   margin-bottom: 10px;
+  width: 35px;
+  height: 35px;
 }
 
 .header_menu {
@@ -101,8 +107,6 @@ img[src*="/uploads/user/icon/"] {
   to { transform: scale(1); }
 }
 
-/* faa-wrench animated-hover */
-
 .users_form {
   font-family: 'Bitter', serif;
   text-align: center;
@@ -112,15 +116,15 @@ img[src*="/uploads/user/icon/"] {
   color: white;
 }
 
+.users_form input{
+  color: black;
+}
+
 .acount-link a {
   color: white;
 }
 
 .login-link a {
-  color: white;
-}
-
-.user-name a {
   color: white;
 }
 
@@ -149,105 +153,99 @@ img[src*="/uploads/user/icon/"] {
   z-index: 1000;
 }
 
-/* .txt {
-  margin-top: calc(50vh - 43px);
-  position: absolute;
-  width: 100%;
-  z-index: 1000;
-} */
-
 @import url(https://fonts.googleapis.com/css?family=Bitter);
     
-    .holder,
-    .first,
-    .second,
-    .third {
-      height: 100vh;
-      width: 100vw;
-    }
-    .first,
-    .second,
-    .third {
-      position: absolute;
-    }
-    .second,
-    .third {
-      opacity: 0;
-    }
-    .holder {
-      height: 100vh;
-      position: relative;
-      z-index: 1;
-    }
-    .first {
-      animation: first 10s infinite;
-      background: linear-gradient(#5ff8ca, #60e08c);
-      z-index: 10;
-    }
-      @keyframes first {
-        0% {opacity: 0;}
-        10% {opacity: 0.1;}
-        20% {opacity: 0.2;}
-        30% {opacity: 0.3;}
-        40% {opacity: 0.4;}
-        50% {opacity: 0.5;}
-        60% {opacity: 0.4;}
-        70% {opacity: 0.3;}
-        80% {opacity: 0.2;}
-        90% {opacity: 0.1;}
-        100% {opacity: 0;}
-      }
+.holder,
+.first,
+.second,
+.third {
+  height: 100vh;
+  width: 100vw;
+}
+.first,
+.second,
+.third {
+  position: absolute;
+}
 
-    .second {
-      animation: second 10s infinite; animation-delay: 2s;
-      background: linear-gradient(#19eaa6, #00a1f0);
-      z-index: 20;
-    }
-      @keyframes second {
-        0% {opacity: 0;}
-        10% {opacity: 0.1;}
-        20% {opacity: 0.2;}
-        30% {opacity: 0.3;}
-        40% {opacity: 0.4;}
-        50% {opacity: 0.5;}
-        60% {opacity: 0.4;}
-        70% {opacity: 0.3;}
-        80% {opacity: 0.2;}
-        90% {opacity: 0.1;}
-        100% {opacity: 0;}
-      }
+.second,
+.third {
+  opacity: 0;
+}
 
-    .third {
-      animation: third 10s infinite;
-      animation-delay: 8s;
-      background: linear-gradient(#aab7f8, #ff75c6);
-      z-index: 30;
-    }
-      @keyframes third {
-        0% {opacity: 0;}
-        10% {opacity: 0.1;}
-        20% {opacity: 0.2;}
-        30% {opacity: 0.3;}
-        40% {opacity: 0.4;}
-        50% {opacity: 0.5;}
-        60% {opacity: 0.4;}
-        70% {opacity: 0.3;}
-        80% {opacity: 0.2;}
-        90% {opacity: 0.1;}
-        100% {opacity: 0;}
-      }
+.holder {
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
 
-    h1 {
-      font-size: 40px;
-      font-weight: 400;
-      margin: 0;
-    }
+.first {
+  animation: first 10s infinite;
+  background: linear-gradient(#5ff8ca, #60e08c);
+  z-index: 10;
+}
 
-    p {
-      font-size: 20px;
-      margin-top: 0;
-    }
+@keyframes first {
+  0% {opacity: 0;}
+  10% {opacity: 0.1;}
+  20% {opacity: 0.2;}
+  30% {opacity: 0.3;}
+  40% {opacity: 0.4;}
+  50% {opacity: 0.5;}
+  60% {opacity: 0.4;}
+  70% {opacity: 0.3;}
+  80% {opacity: 0.2;}
+  90% {opacity: 0.1;}
+  100% {opacity: 0;}
+}
 
-    /* .input button {
-      font-family: 'Bitter', serif;
-    } */
+.second {
+  animation: second 10s infinite; animation-delay: 2s;
+  background: linear-gradient(#19eaa6, #00a1f0);
+  z-index: 20;
+}
+
+@keyframes second {
+  0% {opacity: 0;}
+  10% {opacity: 0.1;}
+  20% {opacity: 0.2;}
+  30% {opacity: 0.3;}
+  40% {opacity: 0.4;}
+  50% {opacity: 0.5;}
+  60% {opacity: 0.4;}
+  70% {opacity: 0.3;}
+  80% {opacity: 0.2;}
+  90% {opacity: 0.1;}
+  100% {opacity: 0;}
+}
+
+.third {
+animation: third 10s infinite;
+animation-delay: 8s;
+background: linear-gradient(#aab7f8, #ff75c6);
+z-index: 30;
+}
+@keyframes third {
+  0% {opacity: 0;}
+  10% {opacity: 0.1;}
+  20% {opacity: 0.2;}
+  30% {opacity: 0.3;}
+  40% {opacity: 0.4;}
+  50% {opacity: 0.5;}
+  60% {opacity: 0.4;}
+  70% {opacity: 0.3;}
+  80% {opacity: 0.2;}
+  90% {opacity: 0.1;}
+  100% {opacity: 0;}
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 400;
+  margin: 0;
+}
+
+
+.button input{
+  color: black;
+}

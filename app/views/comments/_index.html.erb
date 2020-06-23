@@ -2,7 +2,7 @@
   <% if comment.id.present? %>
 
       <%= link_to user_path(comment.user.id) do %>
-        <%= image_tag topic.user.icon.thumb.url %>
+        <%= image_tag comment.user.icon.thumb.url %>
         <%= comment.user.name %>
       <% end %>
 
