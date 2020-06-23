@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
 
-  before_action :set_topic, only: [:show, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy]
   before_action :set_topics, only: [:home, :index, :create]
   before_action :ensure_correct_user, only: [:destroy]
   before_action :authenticate_user!
@@ -35,6 +35,9 @@ class TopicsController < ApplicationController
     )
   end
 
+  def edit
+  end
+
   def create
     @topic = current_user.topics.build(topic_params)
       if @topic.save
@@ -42,6 +45,14 @@ class TopicsController < ApplicationController
       else
         render :new
       end
+  end
+
+  def update
+    if @topic.update(topic_params)
+      redirect_to home_path
+    else
+      render :new
+    end
   end
 
   def destroy

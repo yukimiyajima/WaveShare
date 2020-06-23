@@ -19,3 +19,18 @@
 
   <% end %>
 <% end %>
+
+<script>
+  $(function() {
+    if ( $('#comment_content').val().length == 0 ) {
+      $('#submit').attr('disabled', 'disabled');
+    }
+    $('#comment_content').bind('keydown keyup keypress change', function() {
+      if ( $(this).val().length > 0 ) {
+        $('#submit').removeAttr('disabled');
+      } else {
+        $('#submit').attr('disabled', 'disabled');
+      }
+    });
+  });
+</script>

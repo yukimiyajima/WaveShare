@@ -245,7 +245,16 @@ h1 {
   margin: 0;
 }
 
-
 .button input{
   color: black;
+}
+
+.topics-icon-item{
+  display: flex;
+  justify-content: space-around;
+}
+
+.user-topics-items{
+  display: flex;
+  justify-content: space-around;
 }
