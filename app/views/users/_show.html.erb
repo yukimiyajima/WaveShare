@@ -1,10 +1,43 @@
-<h1>
+<div class="text-center">
   <%= image_tag @user.icon.url %>
-  <%= @user.name %>
-</h1>
-<% if current_user.id == @user.id %>
-  <%= link_to 'edit', edit_user_registration_path %>
-<% end %>
+  <h1><%= @user.name %></h1>
+  
+  <div>
+    <% if current_user.id == @user.id %>
+      <%= link_to 'edit', edit_user_registration_path %>
+    <% end %>
+  </div>
+
+</div>
+
 <hr>
+
+<div class="row">
+
+  <% if @likes_topic == true %>
+
+    <div class='col-xs-3'>
+        <%= link_to t('topics'), user_path(id: @user.id)%>
+    </div>
+
+    <div class='col-xs-offset-3 col-xs-3 text-center'>
+      <p class='likes_topic' ><%= t('Likes')%></p>
+    </div>
+
+  <% else %>
+
+    <div class='col-xs-3'>
+        <p class='likes_topic' ><%= t('topics')%></p>
+    </div>
+
+    <div class='col-xs-offset-3 col-xs-3 text-center'>
+      <%= link_to t('Likes'), user_likes_path(@user.id) %>
+    </div>
+
+  <% end %>
+
+</div>
+
+<hr style="margin-top: 0;">
 
 <%= render partial: 'topics/index', locals: { topics: @topics } %>
