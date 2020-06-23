@@ -5,11 +5,11 @@
 <%= form_with(model: topic) do |form| %>
   <div>
     <%= form.label :title %>
-    <%= form.text_area :title, class: 'form-control', style: 'resize: none;' %>
+    <%= form.text_area :title, class: 'form-control', style: 'resize: none;', placeholder: 'ポイント名や場所を入力' %>
   </div>
   <div>
     <%= form.label :content %>
-    <%= form.text_area :content, class: 'form-control', style: 'resize: none;' %>
+    <%= form.text_area :content, class: 'form-control', style: 'resize: none;', placeholder: '海や波の概況を入力' %>
   </div>
 
   <div>
