@@ -12,29 +12,15 @@
 
 <hr>
 
-<div class="row">
+<div class="user-show-spueeze">
 
-  <% if @likes_topic == true %>
-
-    <div class='col-xs-3'>
-        <%= link_to t('topics'), user_path(id: @user.id)%>
+    <div>
+        <%= link_to t('topics'), user_path(id: current_user.id)%>
     </div>
 
-    <div class='col-xs-offset-3 col-xs-3 text-center'>
-      <p class='likes_topic' ><%= t('Likes')%></p>
-    </div>
-
-  <% else %>
-
-    <div class='col-xs-3'>
-        <p class='likes_topic' ><%= t('topics')%></p>
-    </div>
-
-    <div class='col-xs-offset-3 col-xs-3 text-center'>
+    <div>
       <%= link_to t('Likes'), user_likes_path(@user.id) %>
     </div>
-
-  <% end %>
 
 </div>
 
