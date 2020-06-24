@@ -18,6 +18,12 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'font-awesome-rails'
+gem 'faker'
+gem 'bcrypt_pbkdf'
+gem 'ed25519'
+gem 'fog-aws'
+gem 'unicorn'
+gem 'mini_racer', platforms: :ruby
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -25,8 +31,12 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'spring-commands-rspec'
-  gem 'faker'
   gem 'launchy'
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
