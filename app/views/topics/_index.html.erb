@@ -45,7 +45,7 @@
       <div>
       <% if current_user.id == topic.user_id %>
         <object>
-          <%= link_to fa_icon("trash 2x"), topic, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+          <%= link_to fa_icon("trash 2x"), topic, method: :delete, data: { confirm: '削除していいですか？' }, remote: true %>
         </object>
       <% end %>
       </div>
