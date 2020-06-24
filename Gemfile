@@ -18,6 +18,11 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'font-awesome-rails'
+gem 'faker'
+gem 'bcrypt_pbkdf'
+gem 'ed25519'
+gem 'fog-aws'
+gem 'unicorn'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -25,7 +30,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'spring-commands-rspec'
-  gem 'faker'
   gem 'launchy'
 end
 
