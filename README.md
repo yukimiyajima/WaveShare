@@ -19,7 +19,7 @@
 * ログイン機能
 * コメント機能
 * いいね機能
-* トピック機能（投稿、一覧、詳細）※Google mapとの連携予定
+* トピック機能（投稿、一覧、詳細）※Google Mapとの連携
 
 
 ## カタログ設計
@@ -45,9 +45,7 @@ https://docs.google.com/spreadsheets/d/1CztLbOw4qnsgmeVP2CSxrQOUWS4sHDoBhsYrTGTZ
 * carrierwave
 * mini_magick
 * devise
-* RSpec
 * Google Maps JavaScript API
-* geolocation API
 * AWS
 * Ajax
 * Bootstrap 3
