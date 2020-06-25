@@ -1,0 +1,10 @@
+<%= form_with(model: [topic, comment]) do |f| %>
+  
+  <div class="field">
+  <%= f.text_field :content, class: 'form-control', id: "comment_content_#{topic.id}" %>
+  
+  <div class="actions text-right">
+    <%= f.submit class: 'btn', id:"submit" %>
+  </div>
+</div>
+<% end %> 

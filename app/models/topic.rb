@@ -1,6 +1,6 @@
 class Topic < ApplicationRecord
-  validates :title, presence: true
-  validates :content, presence: true
+  validates :title, presence: true, length: { maximum: 30 }
+  validates :content, presence: true, length: { maximum: 100 }
   validates :lat, presence: true
   validates :lng, presence: true
   validates :user_id, presence: true
