@@ -154,6 +154,12 @@ img[src*="/uploads/user/icon/"] {
   z-index: 1000;
 }
 
+.comments-icon-item{
+  display: flex;
+  justify-content: space-around;
+  margin-left: 160px;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Bitter);
     
 .holder,
@@ -241,6 +247,7 @@ z-index: 30;
 }
 
 h1 {
+  font-family: 'Bitter', serif;
   font-size: 40px;
   font-weight: 400;
   margin: 0;

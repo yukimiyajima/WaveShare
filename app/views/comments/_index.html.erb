@@ -10,27 +10,20 @@
 
       <div style="background: white;">
 
+        <div class="comment-content" id="this_comment_<%= comment.id %>">
         <p><%= comment.content %></p>
+        </div>
 
-
+        
       </div>
+      <div class="comments-icon-item">
+          <div><%= link_to fa_icon("pencil 2x"), edit_topic_comment_path(topic, comment), remote: true %></div>
+
+          <div><%= link_to fa_icon("trash 2x"), topic_comment_path(comment.topic_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} %></div>
+        </div>
 
       <hr>
 
   <% end %>
 <% end %>
 
-<script>
-  $(function() {
-    if ( $('#comment_content').val().length == 0 ) {
-      $('#submit').attr('disabled', 'disabled');
-    }
-    $('#comment_content').bind('keydown keyup keypress change', function() {
-      if ( $(this).val().length > 0 ) {
-        $('#submit').removeAttr('disabled');
-      } else {
-        $('#submit').attr('disabled', 'disabled');
-      }
-    });
-  });
-</script>
