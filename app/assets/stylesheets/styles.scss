@@ -154,10 +154,14 @@ img[src*="/uploads/user/icon/"] {
   z-index: 1000;
 }
 
-.comments-icon-item{
+.comments-icon-item {
   display: flex;
   justify-content: space-around;
   margin-left: 160px;
+}
+
+#error_explanation {
+  color: red;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Bitter);

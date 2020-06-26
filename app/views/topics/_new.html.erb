@@ -3,6 +3,18 @@
 <% end %>
 
 <%= form_with(model: topic) do |form| %>
+
+  <% if @topic.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= @topic.errors.count %>件のエラーがあります。</h3>
+      <ul>
+      <% @topic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <%= form.label :title %>
     <%= form.text_area :title, class: 'form-control', style: 'resize: none;', placeholder: 'ポイント名や場所を入力' %>
