@@ -10,6 +10,13 @@
   p{
     text-align: center;
   }
+  .error-top{
+    text-align: center;
+    color: red;
+    font-weight: bolder;
+    font-size: 5rem;
+  }
+  
   img{
     display: block;
     margin: 0 auto;
@@ -19,8 +26,9 @@
 <body>
   <!-- This file lives in public/404.html -->
   <div class="error">
-    <img src="/404.png">
+    <div class="error-top">404<br>ERROR</div>
     <p>お探しのページは見つかりません。</p>
+    <p>ブラウザの戻るボタンから再読み込みをしてください。</p>
   </div>
 </body>
 </html>
